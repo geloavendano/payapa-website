@@ -184,13 +184,21 @@
   .btn-cta:disabled { opacity: 0.3; cursor: default; }
 </style>
 <script src="images.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-49S3QQYDCP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-49S3QQYDCP');
+</script>
 </head>
 <body>
 
 <!-- ════ SCREEN 1 · LOCATION ════ -->
 <div class="screen active" id="s-location">
   <div class="topbar">
-    <div class="back-btn" onclick="window.location='index.html'">
+    <div class="back-btn" onclick="window.location='payapa-landing-v5.html'">
       <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M19 12H5M5 12l7-7M5 12l7 7"/></svg>
     </div>
     <span class="topbar-title">Book an appointment</span>
@@ -463,7 +471,7 @@
     <h2 class="success-title">We have received<br>your booking request</h2>
     <p class="success-sub">You'll be notified once confirmed. If we have any questions, we'll reach out directly.</p>
     <p class="success-see">See you soon.</p>
-    <button class="btn-cta" style="max-width:220px;" onclick="window.location='index.html'">Back to home</button>
+    <button class="btn-cta" style="max-width:220px;" onclick="window.location='payapa-landing-v5.html'">Back to home</button>
   </div>
 </div>
 
