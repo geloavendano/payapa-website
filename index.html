@@ -20,202 +20,145 @@
   html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
   body { background: var(--bg); color: var(--cream); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
 
-  /* ══ SNAP ══ */
-  .snap-section {
-    height: 100svh;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
+  .snap-section { height: 100svh; scroll-snap-align: start; scroll-snap-stop: always; position: relative; overflow: hidden; display: flex; flex-direction: column; }
 
   /* ══ HERO ══ */
   #hero { align-items: center; justify-content: center; text-align: center; padding: 60px 32px 64px; }
   .hero-bg { position: absolute; inset: 0; z-index: 0; }
   .hero-bg img { width:100%; height:100%; object-fit:cover; object-position:center top; }
-  .hero-bg::after {
-    content:""; position:absolute; inset:0;
-    background: linear-gradient(to bottom, rgba(28,35,24,0.52) 0%, rgba(28,35,24,0.22) 35%, rgba(28,35,24,0.72) 100%);
-  }
+  .hero-bg::after { content:""; position:absolute; inset:0; background: linear-gradient(to bottom, rgba(28,35,24,0.52) 0%, rgba(28,35,24,0.22) 35%, rgba(28,35,24,0.72) 100%); }
   .hero-content { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; }
   .hero-logo { width:52px; height:52px; object-fit:contain; margin-bottom:12px; filter:brightness(1.1); opacity:0; animation:fadeUp 0.7s ease 0.1s forwards; }
-  .hero-wordmark {
-    font-family:"Cormorant Garamond",serif; font-size:13px; font-weight:400;
-    letter-spacing:0.35em; text-transform:uppercase; color:var(--cream);
-    margin-bottom:6px; opacity:0; animation:fadeUp 0.7s ease 0.2s forwards;
-  }
-  .hero-submark {
-    font-size:9px; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold);
-    margin-bottom:36px; opacity:0; animation:fadeUp 0.7s ease 0.3s forwards;
-  }
-  .hero-title {
-    font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:300;
-    font-size:clamp(40px,11vw,60px); line-height:1.1; color:var(--cream);
-    margin-bottom:20px; opacity:0; animation:fadeUp 0.8s ease 0.45s forwards;
-    text-shadow:0 2px 20px rgba(0,0,0,0.4);
-  }
-  .hero-tagline {
-    font-family:"Cormorant Garamond",serif; font-style:italic; font-size:15px;
-    color:var(--cream-m); line-height:1.65; max-width:260px; margin:0 auto 32px;
-    opacity:0; animation:fadeUp 0.8s ease 0.6s forwards;
-    text-shadow:0 1px 8px rgba(0,0,0,0.5);
-  }
+  .hero-wordmark { font-family:"Cormorant Garamond",serif; font-size:13px; font-weight:400; letter-spacing:0.35em; text-transform:uppercase; color:var(--cream); margin-bottom:6px; opacity:0; animation:fadeUp 0.7s ease 0.2s forwards; }
+  .hero-submark { font-size:9px; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); margin-bottom:36px; opacity:0; animation:fadeUp 0.7s ease 0.3s forwards; }
+  .hero-title { font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:300; font-size:clamp(40px,11vw,60px); line-height:1.1; color:var(--cream); margin-bottom:20px; opacity:0; animation:fadeUp 0.8s ease 0.45s forwards; text-shadow:0 2px 20px rgba(0,0,0,0.4); }
+  .hero-tagline { font-family:"Cormorant Garamond",serif; font-style:italic; font-size:15px; color:var(--cream-m); line-height:1.65; max-width:260px; margin:0 auto 32px; opacity:0; animation:fadeUp 0.8s ease 0.6s forwards; text-shadow:0 1px 8px rgba(0,0,0,0.5); }
   .hero-tagline strong { font-style:normal; color:var(--cream); font-weight:400; }
-  .hero-book {
-    display:inline-block; padding:13px 42px; background:var(--gold); color:var(--bg);
-    font-size:11px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase;
-    text-decoration:none; border-radius:2px;
-    opacity:0; animation:fadeUp 0.8s ease 0.75s forwards;
-  }
-  .scroll-hint {
-    position:absolute; bottom:24px; left:50%; transform:translateX(-50%);
-    font-size:9px; letter-spacing:0.2em; text-transform:uppercase;
-    color:rgba(240,234,216,0.5); display:flex; flex-direction:column;
-    align-items:center; gap:8px; opacity:0; animation:fadeUp 0.6s ease 1.2s forwards;
-    cursor:pointer; z-index:1;
-  }
+  .hero-book { display:inline-block; padding:13px 42px; background:var(--gold); color:var(--bg); font-size:11px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; border-radius:2px; opacity:0; animation:fadeUp 0.8s ease 0.75s forwards; }
+  .scroll-hint { position:absolute; bottom:24px; left:50%; transform:translateX(-50%); font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(240,234,216,0.5); display:flex; flex-direction:column; align-items:center; gap:8px; opacity:0; animation:fadeUp 0.6s ease 1.2s forwards; cursor:pointer; z-index:1; }
   .scroll-hint::after { content:""; width:1px; height:24px; background:rgba(240,234,216,0.35); animation:pulse 2s ease-in-out infinite; }
 
   /* ══ LOCATIONS ══ */
   #locations { flex-direction:column; }
-  .loc-tabs {
-    position:absolute; top:20px; left:50%; transform:translateX(-50%); z-index:10;
-    display:flex; background:rgba(28,35,24,0.65); border:0.5px solid var(--border);
-    border-radius:30px; padding:4px; backdrop-filter:blur(10px); gap:2px;
-  }
+  .loc-tabs { position:absolute; top:20px; left:50%; transform:translateX(-50%); z-index:10; display:flex; background:rgba(28,35,24,0.65); border:0.5px solid var(--border); border-radius:30px; padding:4px; backdrop-filter:blur(10px); gap:2px; }
   .loc-tab { font-size:12px; color:var(--mid); padding:7px 18px; border-radius:26px; cursor:pointer; transition:background 0.25s,color 0.25s; white-space:nowrap; }
   .loc-tab.active { background:var(--gold); color:var(--bg); }
   .loc-slides-wrap { position:absolute; inset:0; display:flex; transition:transform 0.65s cubic-bezier(0.4,0,0.2,1); }
   .loc-slide { min-width:100%; height:100%; position:relative; flex-shrink:0; }
   .loc-slide-img { position:absolute; inset:0; overflow:hidden; }
   .loc-slide-img img { width:100%; height:100%; object-fit:cover; }
-  .loc-gradient {
-    position:absolute; inset:0;
-    background:linear-gradient(to top, rgba(28,35,24,0.97) 0%, rgba(28,35,24,0.42) 38%, rgba(28,35,24,0.06) 100%);
-    pointer-events:none;
-  }
-  .loc-thumbs { position:absolute; bottom:168px; left:0; right:0; display:flex; gap:8px; padding:0 24px; z-index:5; overflow-x:auto; scrollbar-width:none; }
+  .loc-gradient { position:absolute; inset:0; background:linear-gradient(to top, rgba(28,35,24,0.97) 0%, rgba(28,35,24,0.42) 38%, rgba(28,35,24,0.06) 100%); pointer-events:none; }
+  .loc-thumbs { position:absolute; bottom:188px; left:0; right:0; display:flex; gap:8px; padding:0 24px; z-index:5; overflow-x:auto; scrollbar-width:none; }
   .loc-thumbs::-webkit-scrollbar { display:none; }
   .loc-thumb { width:56px; height:56px; border-radius:5px; border:1.5px solid transparent; background:rgba(58,77,50,0.5); flex-shrink:0; cursor:pointer; transition:border-color 0.2s; overflow:hidden; }
   .loc-thumb.active { border-color:var(--gold); }
-  .loc-dots { position:absolute; bottom:152px; left:0; right:0; display:flex; justify-content:center; gap:6px; z-index:5; }
+  .loc-dots { position:absolute; bottom:172px; left:0; right:0; display:flex; justify-content:center; gap:6px; z-index:5; }
   .loc-dot { width:5px; height:5px; border-radius:50%; background:rgba(240,234,216,0.3); transition:background 0.3s,transform 0.3s; }
   .loc-dot.active { background:var(--gold); transform:scale(1.3); }
-  .loc-info { position:absolute; bottom:0; left:0; right:0; z-index:5; padding:0 24px 28px; }
+  .loc-info { position:absolute; bottom:0; left:0; right:0; z-index:5; padding:0 24px 24px; }
   .loc-info-name { font-family:"Cormorant Garamond",serif; font-size:28px; color:var(--cream); margin-bottom:3px; }
   .loc-info-addr { font-size:11px; color:var(--cream-m); line-height:1.5; margin-bottom:8px; }
-  .loc-info-row { display:flex; align-items:center; justify-content:space-between; }
+  .loc-info-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
   .loc-maps { font-size:11px; color:var(--gold); text-decoration:none; display:inline-flex; align-items:center; gap:4px; }
-  .loc-hours { font-size:11px; color:var(--mid); }
+  .loc-hours { font-size:11px; color:var(--mid); text-align:right; line-height:1.5; }
+  .loc-learn-more { display:inline-flex; align-items:center; gap:6px; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--cream-m); background:rgba(240,234,216,0.08); border:0.5px solid rgba(240,234,216,0.2); border-radius:20px; padding:7px 16px; cursor:pointer; transition:background 0.2s, border-color 0.2s; }
+  .loc-learn-more:active { background:rgba(240,234,216,0.15); }
 
-  /* ══ SERVICES — POND BACKGROUND ══ */
-  #services {
-    scroll-snap-align: start;
-    height: 100svh;
-    overflow: hidden;
-    position: relative;
+  /* ══ LOCATION MODAL ══ */
+  .loc-modal-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 500;
+    background: rgba(10,16,10,0.7);
+    backdrop-filter: blur(4px);
+    align-items: flex-end;
+    justify-content: center;
   }
+  .loc-modal-overlay.open { display: flex; }
 
-  /* Full-section pond canvas */
-  #pond-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
+  .loc-modal {
+    background: var(--bg);
+    width: 100%; max-width: 640px;
+    max-height: 92svh;
+    border-radius: 16px 16px 0 0;
+    overflow-y: auto;
+    scrollbar-width: none;
+    animation: slideUp 0.35s cubic-bezier(0.4,0,0.2,1);
   }
+  .loc-modal::-webkit-scrollbar { display: none; }
+  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
-  /* Dark vignette over pond */
-  .pond-vignette {
-    position: absolute; inset: 0; z-index: 1;
-    background: radial-gradient(ellipse 100% 100% at 50% 50%, rgba(28,35,24,0.15) 0%, rgba(28,35,24,0.55) 100%);
-    pointer-events: none;
+  .loc-modal-header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg);
+    padding: 20px 20px 0;
+    display: flex; align-items: flex-start; justify-content: space-between;
+    border-bottom: 0.5px solid var(--border);
+    padding-bottom: 16px;
   }
+  .loc-modal-header-left { display: flex; flex-direction: column; gap: 2px; }
+  .loc-modal-tag { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .loc-modal-name { font-family: "Cormorant Garamond", serif; font-size: 26px; color: var(--cream); line-height: 1.1; }
+  .loc-modal-subtitle { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 14px; color: var(--cream-m); }
+  .loc-modal-close { width: 34px; height: 34px; border-radius: 50%; border: 0.5px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--mid); flex-shrink: 0; transition: border-color 0.2s; }
+  .loc-modal-close:active { border-color: var(--gold); }
 
-  .services-inner {
-    position: relative; z-index: 2;
-    width: 100%; height: 100%;
-    display: flex; flex-direction: column;
-    padding: 28px 0 20px;
-  }
+  .loc-modal-body { padding: 20px; }
 
-  .services-header {
-    text-align: center;
-    padding: 0 24px 16px;
-    flex-shrink: 0;
-  }
+  .loc-modal-section { margin-bottom: 24px; }
+  .loc-modal-section-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; padding-bottom: 8px; border-bottom: 0.5px solid var(--border); }
+  .loc-modal-desc { font-size: 13px; color: var(--cream-m); line-height: 1.75; }
+  .loc-modal-desc + .loc-modal-desc { margin-top: 10px; }
+
+  .loc-modal-identity { background: var(--surface); border-radius: 10px; padding: 14px 16px; border: 0.5px solid var(--border); }
+  .loc-modal-identity-element { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .loc-modal-identity-desc { font-size: 12px; color: var(--cream-m); line-height: 1.6; font-style: italic; }
+
+  .loc-modal-features { display: flex; flex-direction: column; gap: 0; }
+  .loc-modal-feature { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 0.5px solid var(--border); }
+  .loc-modal-feature:last-child { border-bottom: none; }
+  .loc-modal-feature-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--mid); flex-shrink: 0; margin-top: 6px; }
+  .loc-modal-feature-text { font-size: 13px; color: var(--cream-m); line-height: 1.5; }
+  .loc-modal-feature-text strong { color: var(--cream); font-weight: 400; }
+
+  .loc-modal-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .loc-modal-stat { background: var(--surface); border-radius: 8px; padding: 14px; border: 0.5px solid var(--border); text-align: center; }
+  .loc-modal-stat-num { font-family: "Cormorant Garamond", serif; font-size: 28px; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+  .loc-modal-stat-label { font-size: 10px; color: var(--mid); letter-spacing: 0.06em; }
+
+  .loc-modal-book { display: block; width: 100%; padding: 14px; background: var(--gold); color: var(--bg); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border-radius: 6px; text-align: center; margin-top: 8px; border: none; cursor: pointer; }
+
+  /* ══ SERVICES ══ */
+  #services { scroll-snap-align: start; height: 100svh; overflow: hidden; position: relative; }
+  #pond-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+  .pond-vignette { position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse 100% 100% at 50% 50%, rgba(28,35,24,0.15) 0%, rgba(28,35,24,0.55) 100%); pointer-events: none; }
+  .services-inner { position: relative; z-index: 2; width: 100%; height: 100%; display: flex; flex-direction: column; padding: 28px 0 20px; }
+  .services-header { text-align: center; padding: 0 24px 16px; flex-shrink: 0; }
   .services-eyebrow { font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
   .services-title { font-family:"Cormorant Garamond",serif; font-size:26px; color:var(--cream); }
-
-  /* ── STONE CARDS LAYOUT (mobile) ── */
-  .stone-cards {
-    flex: 1;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 0 16px;
-    gap: 0;
-  }
-
-  /* Each row shifts left/right irregularly */
-  .stone-row { width: 100%; display: flex; }
+  .stone-cards { flex: 1; position: relative; display: flex; flex-direction: column; justify-content: space-evenly; align-items: center; padding: 0 16px; }
+  .stone-row { width: 100%; display: flex; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .stone-row:nth-child(1) { justify-content: flex-start; padding-left: 4px; }
-  .stone-row:nth-child(2) { justify-content: flex-end;   padding-right: 4px; }
+  .stone-row:nth-child(2) { justify-content: flex-end; padding-right: 4px; }
   .stone-row:nth-child(3) { justify-content: center; margin-left: -12px; }
-
-  /* Opacity animate in */
-  .stone-row {
-    opacity: 0; transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
   .stone-row.visible { opacity:1; transform:translateY(0); }
-
-  .stone-shape {
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    cursor: default;
-  }
-
-  /* Mobile sizes */
-  .stone-shape { width: 68vw; min-height: 22vw; padding: 20px 24px; }
+  .stone-shape { position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; width: 68vw; min-height: 22vw; padding: 20px 24px; }
   .stone-1 { border-radius: 50% 50% 44% 56% / 46% 42% 58% 54%; background: var(--surface); border: 0.5px solid rgba(150,180,120,0.25); }
-  .stone-2 { border-radius: 44% 56% 50% 50% / 54% 50% 50% 46%; background: var(--raised);  border: 0.5px solid rgba(150,180,120,0.2); }
+  .stone-2 { border-radius: 44% 56% 50% 50% / 54% 50% 50% 46%; background: var(--raised); border: 0.5px solid rgba(150,180,120,0.2); }
   .stone-3 { border-radius: 52% 48% 46% 54% / 50% 54% 46% 50%; background: var(--surface); border: 0.5px solid rgba(150,180,120,0.25); }
-
   .stone-eyebrow { font-size:8px; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
   .stone-name { font-family:"Cormorant Garamond",serif; font-size:22px; color:var(--cream); line-height:1.15; margin-bottom:6px; }
   .stone-desc { font-size:11px; color:var(--cream-m); line-height:1.6; max-width:200px; margin-bottom:6px; }
   .stone-from { font-size:11px; color:var(--mid); }
   .stone-from strong { color:var(--gold); font-weight:400; }
 
-  /* ── DESKTOP OVERRIDES ── */
   @media (min-width: 768px) {
-    .services-header { padding-bottom: 20px; }
     .services-title { font-size: 32px; }
-
-    .stone-cards {
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      padding: 0 40px;
-      gap: 20px;
-    }
-
+    .stone-cards { flex-direction: row; align-items: center; justify-content: center; padding: 0 40px; gap: 20px; }
     .stone-row { width: auto; padding: 0 !important; margin: 0 !important; }
-    .stone-row:nth-child(1) { align-self: flex-end;   margin-bottom: 60px !important; }
+    .stone-row:nth-child(1) { align-self: flex-end; margin-bottom: 60px !important; }
     .stone-row:nth-child(2) { align-self: center; }
     .stone-row:nth-child(3) { align-self: flex-start; margin-top: 60px !important; }
-
-    .stone-shape { width: 240px; min-height: 200px; padding: 28px 28px; }
+    .stone-shape { width: 240px; min-height: 200px; padding: 28px; }
     .stone-name { font-size: 26px; }
     .stone-desc { font-size: 12px; max-width: 180px; }
   }
@@ -227,22 +170,16 @@
   .footer-tag { font-size:11px; color:var(--mid); margin-bottom:32px; }
   .footer-contact-label { font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--mid); margin-bottom:12px; }
   .footer-contacts { display:flex; flex-direction:column; gap:8px; margin-bottom:32px; }
-  .footer-row { display:flex; justify-content:space-between; font-size:13px; border-bottom:0.5px solid var(--border); padding-bottom:8px; }
-  .footer-branch { color:var(--cream-m); }
-  .footer-num { color:var(--cream); }
+  .footer-row { display:flex; justify-content:space-between; align-items:center; font-size:13px; border-bottom:0.5px solid var(--border); padding-bottom:8px; gap:12px; }
+  .footer-branch { color:var(--cream-m); flex-shrink:0; }
+  .footer-num { color:var(--cream); text-align:right; }
   .footer-socials { display:flex; gap:14px; margin-bottom:28px; }
-  .footer-social { width:34px; height:34px; border-radius:50%; border:0.5px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--mid); cursor:pointer; }
+  .footer-social { width:34px; height:34px; border-radius:50%; border:0.5px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--mid); cursor:pointer; text-decoration:none; transition: border-color 0.2s, color 0.2s; }
+  .footer-social:active { border-color:var(--gold); color:var(--gold); }
   .footer-legal { font-size:10px; color:var(--mid); }
 
   /* ══ FLOAT NAV ══ */
-  .float-nav {
-    position:fixed; bottom:24px; left:50%;
-    transform:translateX(-50%) translateY(80px);
-    background:rgba(46,61,40,0.9); border:0.5px solid var(--border); border-radius:40px;
-    padding:8px 8px 8px 20px; display:flex; align-items:center; gap:16px;
-    z-index:200; transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);
-    white-space:nowrap; backdrop-filter:blur(12px);
-  }
+  .float-nav { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(80px); background:rgba(46,61,40,0.9); border:0.5px solid var(--border); border-radius:40px; padding:8px 8px 8px 20px; display:flex; align-items:center; gap:16px; z-index:200; transition:transform 0.4s cubic-bezier(0.4,0,0.2,1); white-space:nowrap; backdrop-filter:blur(12px); }
   .float-nav.visible { transform:translateX(-50%) translateY(0); }
   .float-nav-logo { font-family:"Cormorant Garamond",serif; font-size:14px; color:var(--cream); cursor:pointer; letter-spacing:0.06em; }
   .float-nav-book { background:var(--gold); color:var(--bg); font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; padding:9px 20px; border-radius:30px; text-decoration:none; }
@@ -263,7 +200,7 @@
     <p class="hero-submark">Wellness &amp; Spa · Philippines</p>
     <h1 class="hero-title">Discover Peace<br>&amp; Relaxation</h1>
     <p class="hero-tagline"><strong>Payapa</strong> means peace — a practice of sensory therapy, healing, and slow living.</p>
-    <a href="payapa-booking.html" class="hero-book">Book Now</a>
+    <a href="booking.html" class="hero-book">Book Now</a>
   </div>
   <div class="scroll-hint" onclick="document.getElementById('locations').scrollIntoView({behavior:'smooth'})">Scroll</div>
 </section>
@@ -277,19 +214,37 @@
   </div>
   <div class="loc-slides-wrap" id="locSlides">
     <div class="loc-slide">
-      <div class="loc-slide-img" id="qc-main"><img src="" data-img="qc-main" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="loc-slide-img" id="qc-main"><img src="" data-img="qc-main" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="loc-gradient"></div>
-      <div class="loc-thumbs" id="qc-thumbs"><div class="loc-thumb active" onclick="switchThumb('qc',0,this)"><img src="" data-img="qc-0" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" loading="lazy"></div><div class="loc-thumb " onclick="switchThumb('qc',1,this)"><img src="" data-img="qc-1" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" loading="lazy"></div><div class="loc-thumb " onclick="switchThumb('qc',2,this)"><img src="" data-img="qc-2" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" loading="lazy"></div><div class="loc-thumb " onclick="switchThumb('qc',3,this)"><img src="" data-img="qc-3" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" loading="lazy"></div></div>
+      <div class="loc-thumbs" id="qc-thumbs">
+        <div class="loc-thumb active" onclick="switchThumb('qc',0,this)"><img src="" data-img="qc-0" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="loc-thumb" onclick="switchThumb('qc',1,this)"><img src="" data-img="qc-1" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="loc-thumb" onclick="switchThumb('qc',2,this)"><img src="" data-img="qc-2" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="loc-thumb" onclick="switchThumb('qc',3,this)"><img src="" data-img="qc-3" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+      </div>
     </div>
     <div class="loc-slide">
-      <div class="loc-slide-img" id="mk-main"><img src="" data-img="mk-main" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="loc-slide-img" id="mk-main"><img src="" data-img="mk-main" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="loc-gradient"></div>
-      <div class="loc-thumbs" id="mk-thumbs"><div class="loc-thumb active" onclick="switchThumb('makati',0,this)"><img src="" data-img="mk-0" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" loading="lazy"></div><div class="loc-thumb " onclick="switchThumb('makati',1,this)"><img src="" data-img="mk-1" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" loading="lazy"></div><div class="loc-thumb " onclick="switchThumb('makati',2,this)"><img src="" data-img="mk-2" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" loading="lazy"></div><div class="loc-thumb " onclick="switchThumb('makati',3,this)"><img src="" data-img="mk-3" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" loading="lazy"></div><div class="loc-thumb " onclick="switchThumb('makati',4,this)"><img src="" data-img="mk-4" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" loading="lazy"></div><div class="loc-thumb " onclick="switchThumb('makati',5,this)"><img src="" data-img="mk-5" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" loading="lazy"></div></div>
+      <div class="loc-thumbs" id="mk-thumbs">
+        <div class="loc-thumb active" onclick="switchThumb('makati',0,this)"><img src="" data-img="mk-0" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="loc-thumb" onclick="switchThumb('makati',1,this)"><img src="" data-img="mk-1" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="loc-thumb" onclick="switchThumb('makati',2,this)"><img src="" data-img="mk-2" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="loc-thumb" onclick="switchThumb('makati',3,this)"><img src="" data-img="mk-3" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="loc-thumb" onclick="switchThumb('makati',4,this)"><img src="" data-img="mk-4" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="loc-thumb" onclick="switchThumb('makati',5,this)"><img src="" data-img="mk-5" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+      </div>
     </div>
     <div class="loc-slide">
-      <div class="loc-slide-img" id="pq-main"><img src="" data-img="pq-main" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+      <div class="loc-slide-img" id="pq-main"><img src="" data-img="pq-main" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="loc-gradient"></div>
-      <div class="loc-thumbs" id="pq-thumbs"><div class="loc-thumb active" onclick="switchThumb('paranaque',0,this)"><img src="" data-img="pq-0" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" loading="lazy"></div><div class="loc-thumb " onclick="switchThumb('paranaque',1,this)"><img src="" data-img="pq-1" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" loading="lazy"></div><div class="loc-thumb " onclick="switchThumb('paranaque',2,this)"><img src="" data-img="pq-2" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" loading="lazy"></div><div class="loc-thumb " onclick="switchThumb('paranaque',3,this)"><img src="" data-img="pq-3" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" loading="lazy"></div><div class="loc-thumb " onclick="switchThumb('paranaque',4,this)"><img src="" data-img="pq-4" style="width:100%;height:100%;object-fit:cover;border-radius:4px;" loading="lazy"></div></div>
+      <div class="loc-thumbs" id="pq-thumbs">
+        <div class="loc-thumb active" onclick="switchThumb('paranaque',0,this)"><img src="" data-img="pq-0" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="loc-thumb" onclick="switchThumb('paranaque',1,this)"><img src="" data-img="pq-1" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="loc-thumb" onclick="switchThumb('paranaque',2,this)"><img src="" data-img="pq-2" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="loc-thumb" onclick="switchThumb('paranaque',3,this)"><img src="" data-img="pq-3" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="loc-thumb" onclick="switchThumb('paranaque',4,this)"><img src="" data-img="pq-4" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+      </div>
     </div>
   </div>
   <div class="loc-dots" id="locDots">
@@ -299,13 +254,63 @@
   </div>
   <div class="loc-info">
     <p class="loc-info-name" id="locName">Quezon City</p>
-    <p class="loc-info-addr" id="locAddr">QC Branch Address lorem ipsum</p>
+    <p class="loc-info-addr" id="locAddr">2F Cocoon Boutique Hotel, 61 Scout Rallos St, cor Sct. Tobias St, Diliman</p>
     <div class="loc-info-row">
-      <a class="loc-maps" href="#"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg> Open in Maps</a>
-      <span class="loc-hours" id="locHours">10:00 AM – 10:00 PM</span>
+      <a class="loc-maps" id="locMaps" href="https://maps.app.goo.gl/hEtcB1toZh92jeBK9" target="_blank">
+        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg> Open in Maps
+      </a>
+      <span class="loc-hours" id="locHours">Weekdays 2PM–2AM<br>Weekends 11AM–2AM</span>
+    </div>
+    <div style="display:flex;justify-content:flex-start;">
+      <div class="loc-learn-more" id="locLearnMore" onclick="openModal(currentLoc)">
+        Learn more
+        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- ══ LOCATION MODALS ══ -->
+<div class="loc-modal-overlay" id="modal-overlay" onclick="closeModalOnOverlay(event)">
+  <div class="loc-modal" id="loc-modal">
+
+    <div class="loc-modal-header">
+      <div class="loc-modal-header-left">
+        <p class="loc-modal-tag" id="modal-tag">Our first home</p>
+        <p class="loc-modal-name" id="modal-name">Quezon City</p>
+        <p class="loc-modal-subtitle" id="modal-subtitle">Scout Rallos, Diliman</p>
+      </div>
+      <div class="loc-modal-close" onclick="closeModal()">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </div>
+    </div>
+
+    <div class="loc-modal-body">
+
+      <div class="loc-modal-section">
+        <p class="loc-modal-section-label">Context</p>
+        <p class="loc-modal-desc" id="modal-desc-1"></p>
+        <p class="loc-modal-desc" id="modal-desc-2"></p>
+      </div>
+
+      <div class="loc-modal-section">
+        <p class="loc-modal-section-label">Spatial identity</p>
+        <div class="loc-modal-identity">
+          <p class="loc-modal-identity-element" id="modal-element"></p>
+          <p class="loc-modal-identity-desc" id="modal-element-desc"></p>
+        </div>
+      </div>
+
+      <div class="loc-modal-section">
+        <p class="loc-modal-section-label">The space</p>
+        <div class="loc-modal-features" id="modal-features"></div>
+      </div>
+
+      <a href="booking.html" class="loc-modal-book">Book this branch</a>
+
+    </div>
+  </div>
+</div>
 
 <!-- ══ FOLD 3 · SERVICES ══ -->
 <section class="snap-section" id="services">
@@ -317,24 +322,21 @@
       <h2 class="services-title">Our services</h2>
     </div>
     <div class="stone-cards">
-
       <div class="stone-row">
         <div class="stone-shape stone-1">
           <p class="stone-eyebrow">Signature</p>
           <h3 class="stone-name">Massage<br>Services</h3>
           <p class="stone-desc">Full-body massage designed to quiet the mind and restore balance.</p>
-          <p class="stone-from">Starts at <strong>₱1,050</strong></p>
+          <p class="stone-from">Starts at <strong>&#8369;1,050</strong></p>
         </div>
       </div>
-
       <div class="stone-row">
         <div class="stone-shape stone-2">
           <p class="stone-eyebrow">On-site</p>
           <h3 class="stone-name">Massage<br>Lounge</h3>
-          <p class="stone-desc">Quiet, intentional touch through gentle shoulder and back work.</p>
+          <p class="stone-desc">An intimate Payapa experience brought to your gathering — slow, grounding touch for celebrations, events, and the workplace.</p>
         </div>
       </div>
-
       <div class="stone-row">
         <div class="stone-shape stone-3">
           <p class="stone-eyebrow">Events</p>
@@ -342,7 +344,6 @@
           <p class="stone-desc">A well-rounded spa experience for gatherings and celebrations.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -354,14 +355,20 @@
     <p class="footer-tag">Wellness &amp; Spa</p>
     <p class="footer-contact-label">Contact us</p>
     <div class="footer-contacts">
-      <div class="footer-row"><span class="footer-branch">Quezon City</span><span class="footer-num">02 XXX XXXX</span></div>
-      <div class="footer-row"><span class="footer-branch">Makati</span><span class="footer-num">02 XXX XXXX</span></div>
-      <div class="footer-row"><span class="footer-branch">Parañaque</span><span class="footer-num">02 XXX XXXX</span></div>
+      <div class="footer-row"><span class="footer-branch">Quezon City</span><span class="footer-num">+63 917 875 1813</span></div>
+      <div class="footer-row"><span class="footer-branch">Makati</span><span class="footer-num">+63 919 276 9579</span></div>
+      <div class="footer-row"><span class="footer-branch">Parañaque</span><span class="footer-num">+63 917 188 6476</span></div>
     </div>
     <div class="footer-socials">
-      <div class="footer-social"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
-      <div class="footer-social"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
-      <div class="footer-social"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></div>
+      <a class="footer-social" href="https://www.facebook.com/payapa.spa/" target="_blank">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a class="footer-social" href="https://www.instagram.com/payapa.spa" target="_blank">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a class="footer-social" href="https://www.tiktok.com/@payapa.spa" target="_blank">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+      </a>
     </div>
     <p class="footer-legal">© 2025 Payapa Wellness &amp; Spa. All rights reserved.</p>
   </footer>
@@ -369,17 +376,82 @@
 
 <nav class="float-nav" id="floatNav">
   <span class="float-nav-logo" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})">Payapa Spa</span>
-  <a href="payapa-booking.html" class="float-nav-book">Book Now</a>
+  <a href="booking.html" class="float-nav-book">Book Now</a>
 </nav>
 
 <script>
 /* ── LOCATION DATA ── */
 const locImages = { qc: PAYAPA_IMAGES.qc, makati: PAYAPA_IMAGES.makati, paranaque: PAYAPA_IMAGES.paranaque };
+
 const locations = [
-  { key:'qc',        name:'Quezon City',  addr:'QC Branch Address lorem ipsum', hours:'10:00 AM – 10:00 PM', mainId:'qc-main', thumbsId:'qc-thumbs' },
-  { key:'makati',    name:'Makati',       addr:'GF Makati Tuscany Condominium, 6751 Ayala Avenue, corner of Fonda Street', hours:'10:00 AM – 10:00 PM', mainId:'mk-main', thumbsId:'mk-thumbs' },
-  { key:'paranaque', name:'Parañaque',    addr:'Parañaque Branch Address lorem ipsum', hours:'10:00 AM – 10:00 PM', mainId:'pq-main', thumbsId:'pq-thumbs' },
+  {
+    key: 'qc',
+    name: 'Quezon City',
+    addr: '2F Cocoon Boutique Hotel, 61 Scout Rallos St, cor Sct. Tobias St, Diliman',
+    hours: 'Weekdays 2PM–2AM\nWeekends 11AM–2AM',
+    maps: 'https://maps.app.goo.gl/hEtcB1toZh92jeBK9',
+    mainId: 'qc-main', thumbsId: 'qc-thumbs',
+    modal: {
+      tag: 'Our first home',
+      subtitle: 'Scout Rallos, Diliman',
+      desc1: 'Payapa Quezon City is where the brand began—designed as a calm, well-considered retreat within the city. The space is intentionally minimalist, allowing the treatments to take center stage while maintaining a warm, grounded atmosphere that feels familiar and reassuring.',
+      desc2: 'This branch is ideal for guests seeking a classic Payapa experience, whether for a quick reset or a longer session of rest and care.',
+      element: 'EARTH',
+      elementDesc: 'Stable, soothing, and deeply grounding—the foundation of Payapa\'s philosophy of slow, intentional rest.',
+      features: [
+        { label: '8 Massage Rooms', detail: '7 single treatment rooms and 1 couples room' },
+        { label: 'Minimalist lobby', detail: 'Clean, calming aesthetic' },
+        { label: 'One Toilet & Shower', detail: null },
+      ]
+    }
+  },
+  {
+    key: 'makati',
+    name: 'Makati',
+    addr: '6751 Ayala Avenue, corner of Fonda Street',
+    hours: 'Mon–Thu 2PM–2AM\nFri–Sun 11AM–2AM',
+    maps: 'https://maps.app.goo.gl/qLjPiGhWcnMH6D6q6',
+    mainId: 'mk-main', thumbsId: 'mk-thumbs',
+    modal: {
+      tag: 'Modern sanctuary in the city',
+      subtitle: 'Ayala Avenue, Makati',
+      desc1: 'Payapa Makati reflects a more urban expression of the brand—refined, composed, and thoughtfully laid out for guests balancing full schedules and city living. The space combines modern design with functional comfort, offering a polished yet welcoming environment.',
+      desc2: 'This branch is also specially equipped to support women\'s health services, including prenatal care, making it a preferred choice for guests with more specific wellness needs.',
+      element: 'FIRE',
+      elementDesc: 'Warm, focused, and energizing. A modern urban retreat where terracotta tones and soft lighting create warmth and presence.',
+      features: [
+        { label: '9 Massage Rooms', detail: '5 single treatment rooms and 2 couples rooms' },
+        { label: 'Minimalist lobby', detail: 'Warm, modern finish' },
+        { label: 'One Toilet & Shower', detail: null },
+        { label: "Women's health services", detail: 'Including prenatal care' },
+      ]
+    }
+  },
+  {
+    key: 'paranaque',
+    name: 'Parañaque',
+    addr: '75 President\'s Avenue, BF Homes',
+    hours: 'Sun–Fri 2PM–2AM\nSaturdays 11AM–2AM',
+    maps: 'https://maps.app.goo.gl/zJfJw9vd9gkrVrWM9',
+    mainId: 'pq-main', thumbsId: 'pq-thumbs',
+    modal: {
+      tag: 'House of Wellness',
+      subtitle: 'BF Homes, Parañaque',
+      desc1: 'Payapa BF Homes is our most expansive location—conceived as a full House of Wellness rather than a single-purpose spa. Set across three floors, this branch is designed for guests who want to spend more time, move between experiences, and treat wellness as part of their lifestyle.',
+      desc2: 'Each treatment room is designed with privacy in mind, and every massage room includes its own private shower area. Beyond massage, the space extends into movement, recovery, and community—making it ideal for longer visits and group experiences.',
+      element: 'WATER',
+      elementDesc: 'Softness and flow. This branch mirrors a slower, more relaxed rhythm—refreshing, flowing, and restorative.',
+      features: [
+        { label: '3 floors', detail: 'Holistic wellness house' },
+        { label: '10 Massage Rooms', detail: '6 single rooms and 2 couples rooms with private shower areas' },
+        { label: 'Recovery', detail: 'Cold plunge and sauna, contrast therapy' },
+        { label: 'Movement & community', detail: 'Reading and movement rooms' },
+        { label: 'Harvest Cafe', detail: 'On-site café' },
+      ]
+    }
+  }
 ];
+
 let currentLoc = 0, autoTimer;
 
 function switchLoc(idx, resetTimer=true) {
@@ -390,7 +462,8 @@ function switchLoc(idx, resetTimer=true) {
   const l = locations[idx];
   document.getElementById('locName').textContent = l.name;
   document.getElementById('locAddr').textContent = l.addr;
-  document.getElementById('locHours').textContent = l.hours;
+  document.getElementById('locHours').innerHTML = l.hours.replace('\n','<br>');
+  document.getElementById('locMaps').href = l.maps;
   if (resetTimer) restartAuto();
 }
 
@@ -406,6 +479,37 @@ function restartAuto() {
   autoTimer = setInterval(() => switchLoc((currentLoc+1)%3, false), 4500);
 }
 
+/* ── MODAL ── */
+function openModal(idx) {
+  const l = locations[idx];
+  const m = l.modal;
+  document.getElementById('modal-tag').textContent = m.tag;
+  document.getElementById('modal-name').textContent = l.name;
+  document.getElementById('modal-subtitle').textContent = m.subtitle;
+  document.getElementById('modal-desc-1').textContent = m.desc1;
+  document.getElementById('modal-desc-2').textContent = m.desc2;
+  document.getElementById('modal-element').textContent = m.element;
+  document.getElementById('modal-element-desc').textContent = m.elementDesc;
+  const featEl = document.getElementById('modal-features');
+  featEl.innerHTML = m.features.map(f => `
+    <div class="loc-modal-feature">
+      <div class="loc-modal-feature-dot"></div>
+      <div class="loc-modal-feature-text"><strong>${f.label}</strong>${f.detail ? ' — ' + f.detail : ''}</div>
+    </div>`).join('');
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOnOverlay(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+
+/* ── SWIPE ── */
 let swipeStart = 0;
 document.getElementById('locations').addEventListener('touchstart', e => { swipeStart = e.touches[0].clientX; }, {passive:true});
 document.getElementById('locations').addEventListener('touchend', e => {
@@ -414,159 +518,83 @@ document.getElementById('locations').addEventListener('touchend', e => {
 }, {passive:true});
 restartAuto();
 
-/* ── FULL-PAGE KOI POND ── */
+/* ── KOI POND ── */
 (function() {
   const canvas = document.getElementById('pond-bg');
   const ctx = canvas.getContext('2d');
-
-  function resize() {
-    canvas.width  = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
+  function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
   resize();
   new ResizeObserver(resize).observe(canvas);
-
   const ripples = [];
-  setInterval(() => ripples.push({
-    x: Math.random()*canvas.width,
-    y: Math.random()*canvas.height,
-    r: 0, maxR: 30+Math.random()*50,
-    alpha: 0.35, speed: 0.5+Math.random()*0.5
-  }), 1400);
-
-  const lilies = Array.from({length: 9}, () => ({
-    x: Math.random()*100, y: Math.random()*100,
-    r: 14+Math.random()*18,
-    angle: Math.random()*Math.PI*2,
-    drift: (Math.random()-0.5)*0.002
-  }));
-
-  const koiDefs = [
-    {body:'#D4601A', belly:'#F0A060', fin:'#C04010'},
-    {body:'#B84020', belly:'#E07050', fin:'#902010'},
-    {body:'#C89050', belly:'#E8C090', fin:'#A87030'},
-    {body:'#F0EAD8', belly:'#fff',    fin:'#D0C0A0'},
-    {body:'#334466', belly:'#667799', fin:'#223355'},
-    {body:'#A03020', belly:'#D06040', fin:'#802010'},
-    {body:'#E0A030', belly:'#F8D080', fin:'#B07820'},
-  ];
-
-  const fish = koiDefs.map(col => ({
-    x: Math.random()*100, y: Math.random()*100,
-    angle: Math.random()*Math.PI*2,
-    speed: 0.06+Math.random()*0.05,
-    length: 32+Math.random()*22,
-    col,
-    wobble: Math.random()*Math.PI*2,
-    wobbleSpeed: 0.035+Math.random()*0.025,
-    turnRate: (Math.random()-0.5)*0.02,
-    timer: Math.floor(Math.random()*200)
-  }));
-
-  function drawLily(x, y, r, angle) {
-    ctx.save();
-    ctx.translate(x, y); ctx.rotate(angle);
-    ctx.beginPath(); ctx.arc(0,0,r,0.14,Math.PI*2-0.14);
-    ctx.fillStyle = '#2a6535'; ctx.fill();
-    ctx.beginPath(); ctx.moveTo(0,0); ctx.arc(0,0,r,-0.14,0.14);
-    ctx.fillStyle = '#1a3020'; ctx.fill();
-    ctx.strokeStyle = 'rgba(55,110,55,0.45)'; ctx.lineWidth = 0.6;
-    for (let a=0; a<8; a++) {
-      const ag = (a/8)*Math.PI*2+0.2;
-      ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(Math.cos(ag)*r*0.88, Math.sin(ag)*r*0.88); ctx.stroke();
-    }
-    if (r > 20) {
-      for (let p=0; p<6; p++) {
-        const pa = (p/6)*Math.PI*2;
-        ctx.save(); ctx.translate(Math.cos(pa)*4, Math.sin(pa)*4);
-        ctx.fillStyle = 'rgba(240,235,220,0.65)';
-        ctx.beginPath(); ctx.ellipse(0,0,2.5,4.5,pa,0,Math.PI*2); ctx.fill();
-        ctx.restore();
-      }
-      ctx.fillStyle='#E0B855'; ctx.beginPath(); ctx.arc(0,0,2.2,0,Math.PI*2); ctx.fill();
-    }
+  setInterval(() => ripples.push({ x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:0, alpha:0.35, speed:0.5+Math.random()*0.5 }), 1400);
+  const lilies = Array.from({length:9}, () => ({ x:Math.random()*100, y:Math.random()*100, r:14+Math.random()*18, angle:Math.random()*Math.PI*2, drift:(Math.random()-0.5)*0.002 }));
+  const koiDefs = [{body:'#D4601A',belly:'#F0A060',fin:'#C04010'},{body:'#B84020',belly:'#E07050',fin:'#902010'},{body:'#C89050',belly:'#E8C090',fin:'#A87030'},{body:'#F0EAD8',belly:'#fff',fin:'#D0C0A0'},{body:'#334466',belly:'#667799',fin:'#223355'},{body:'#A03020',belly:'#D06040',fin:'#802010'},{body:'#E0A030',belly:'#F8D080',fin:'#B07820'}];
+  const fish = koiDefs.map(col => ({ x:Math.random()*100, y:Math.random()*100, angle:Math.random()*Math.PI*2, speed:0.06+Math.random()*0.05, length:32+Math.random()*22, col, wobble:Math.random()*Math.PI*2, wobbleSpeed:0.035+Math.random()*0.025, turnRate:(Math.random()-0.5)*0.02, timer:Math.floor(Math.random()*200) }));
+  function drawLily(x,y,r,angle) {
+    ctx.save(); ctx.translate(x,y); ctx.rotate(angle);
+    ctx.beginPath(); ctx.arc(0,0,r,0.14,Math.PI*2-0.14); ctx.fillStyle='#2a6535'; ctx.fill();
+    ctx.beginPath(); ctx.moveTo(0,0); ctx.arc(0,0,r,-0.14,0.14); ctx.fillStyle='#1a3020'; ctx.fill();
+    ctx.strokeStyle='rgba(55,110,55,0.45)'; ctx.lineWidth=0.6;
+    for(let a=0;a<8;a++){const ag=(a/8)*Math.PI*2+0.2;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(Math.cos(ag)*r*0.88,Math.sin(ag)*r*0.88);ctx.stroke();}
+    if(r>20){for(let p=0;p<6;p++){const pa=(p/6)*Math.PI*2;ctx.save();ctx.translate(Math.cos(pa)*4,Math.sin(pa)*4);ctx.fillStyle='rgba(240,235,220,0.65)';ctx.beginPath();ctx.ellipse(0,0,2.5,4.5,pa,0,Math.PI*2);ctx.fill();ctx.restore();}ctx.fillStyle='#E0B855';ctx.beginPath();ctx.arc(0,0,2.2,0,Math.PI*2);ctx.fill();}
     ctx.restore();
   }
-
   function drawKoi(f) {
-    const w=canvas.width, h=canvas.height;
-    const x=(f.x/100)*w, y=(f.y/100)*h, L=f.length;
-    const wb = Math.sin(f.wobble)*0.28;
-    ctx.save(); ctx.translate(x,y); ctx.rotate(f.angle+wb);
-    ctx.save(); ctx.translate(2,3); ctx.fillStyle='rgba(0,0,0,0.12)';
-    ctx.beginPath(); ctx.ellipse(0,0,L*0.44,L*0.17,0,0,Math.PI*2); ctx.fill(); ctx.restore();
-    ctx.save(); ctx.translate(-L*0.38,0); ctx.fillStyle=f.col.fin; ctx.globalAlpha=0.78;
-    ctx.beginPath(); ctx.moveTo(0,0); ctx.quadraticCurveTo(-L*0.26,-L*0.2+Math.sin(f.wobble*1.4)*4,-L*0.36,-L*0.11); ctx.quadraticCurveTo(-L*0.26,0,0,0); ctx.fill();
-    ctx.beginPath(); ctx.moveTo(0,0); ctx.quadraticCurveTo(-L*0.26, L*0.2+Math.sin(f.wobble*1.4)*4,-L*0.36, L*0.11); ctx.quadraticCurveTo(-L*0.26,0,0,0); ctx.fill();
-    ctx.globalAlpha=1; ctx.restore();
-    ctx.fillStyle=f.col.body; ctx.beginPath(); ctx.ellipse(0,0,L*0.41,L*0.155,0,0,Math.PI*2); ctx.fill();
-    ctx.fillStyle=f.col.belly; ctx.beginPath(); ctx.ellipse(L*0.05,L*0.04,L*0.21,L*0.075,-0.18,0,Math.PI*2); ctx.fill();
-    ctx.fillStyle=f.col.fin; ctx.globalAlpha=0.65;
-    ctx.beginPath(); ctx.moveTo(-L*0.08,-L*0.135); ctx.quadraticCurveTo(L*0.06,-L*0.27,L*0.19,-L*0.135); ctx.closePath(); ctx.fill(); ctx.globalAlpha=1;
-    ctx.fillStyle='#0d0d0d'; ctx.beginPath(); ctx.arc(L*0.31,-L*0.038,2,0,Math.PI*2); ctx.fill();
-    ctx.fillStyle='rgba(255,255,255,0.55)'; ctx.beginPath(); ctx.arc(L*0.32,-L*0.048,0.7,0,Math.PI*2); ctx.fill();
+    const w=canvas.width,h=canvas.height,x=(f.x/100)*w,y=(f.y/100)*h,L=f.length,wb=Math.sin(f.wobble)*0.28;
+    ctx.save();ctx.translate(x,y);ctx.rotate(f.angle+wb);
+    ctx.save();ctx.translate(2,3);ctx.fillStyle='rgba(0,0,0,0.12)';ctx.beginPath();ctx.ellipse(0,0,L*0.44,L*0.17,0,0,Math.PI*2);ctx.fill();ctx.restore();
+    ctx.save();ctx.translate(-L*0.38,0);ctx.fillStyle=f.col.fin;ctx.globalAlpha=0.78;
+    ctx.beginPath();ctx.moveTo(0,0);ctx.quadraticCurveTo(-L*0.26,-L*0.2+Math.sin(f.wobble*1.4)*4,-L*0.36,-L*0.11);ctx.quadraticCurveTo(-L*0.26,0,0,0);ctx.fill();
+    ctx.beginPath();ctx.moveTo(0,0);ctx.quadraticCurveTo(-L*0.26,L*0.2+Math.sin(f.wobble*1.4)*4,-L*0.36,L*0.11);ctx.quadraticCurveTo(-L*0.26,0,0,0);ctx.fill();
+    ctx.globalAlpha=1;ctx.restore();
+    ctx.fillStyle=f.col.body;ctx.beginPath();ctx.ellipse(0,0,L*0.41,L*0.155,0,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle=f.col.belly;ctx.beginPath();ctx.ellipse(L*0.05,L*0.04,L*0.21,L*0.075,-0.18,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle=f.col.fin;ctx.globalAlpha=0.65;ctx.beginPath();ctx.moveTo(-L*0.08,-L*0.135);ctx.quadraticCurveTo(L*0.06,-L*0.27,L*0.19,-L*0.135);ctx.closePath();ctx.fill();ctx.globalAlpha=1;
+    ctx.fillStyle='#0d0d0d';ctx.beginPath();ctx.arc(L*0.31,-L*0.038,2,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,0.55)';ctx.beginPath();ctx.arc(L*0.32,-L*0.048,0.7,0,Math.PI*2);ctx.fill();
     ctx.restore();
   }
-
   function updateFish(f) {
-    f.timer++;
-    if (f.timer%100===0) f.turnRate=(Math.random()-0.5)*0.045;
-    f.angle += f.turnRate; f.wobble += f.wobbleSpeed;
-    const w=canvas.width, h=canvas.height;
-    const px=(f.x/100)*w, py=(f.y/100)*h, m=18;
-    if (px<m) f.angle+=0.05; if (px>w-m) f.angle-=0.05;
-    if (py<m) f.angle+=0.05; if (py>h-m) f.angle-=0.05;
-    f.x = Math.max(0,Math.min(100, f.x + Math.cos(f.angle)*f.speed));
-    f.y = Math.max(0,Math.min(100, f.y + Math.sin(f.angle)*f.speed));
+    f.timer++;if(f.timer%100===0)f.turnRate=(Math.random()-0.5)*0.045;
+    f.angle+=f.turnRate;f.wobble+=f.wobbleSpeed;
+    const w=canvas.width,h=canvas.height,px=(f.x/100)*w,py=(f.y/100)*h,m=18;
+    if(px<m)f.angle+=0.05;if(px>w-m)f.angle-=0.05;if(py<m)f.angle+=0.05;if(py>h-m)f.angle-=0.05;
+    f.x=Math.max(0,Math.min(100,f.x+Math.cos(f.angle)*f.speed));
+    f.y=Math.max(0,Math.min(100,f.y+Math.sin(f.angle)*f.speed));
   }
-
   function loop() {
-    const w=canvas.width, h=canvas.height;
-    ctx.fillStyle='#182815'; ctx.fillRect(0,0,w,h);
-    for (let i=0;i<6;i++) {
-      const x=(i/6)*w + Math.sin(Date.now()*0.00025+i*1.1)*25;
-      ctx.fillStyle='rgba(90,140,70,0.035)'; ctx.fillRect(x,0,w*0.1,h);
-    }
-    lilies.forEach(l => { l.angle+=l.drift; drawLily((l.x/100)*w,(l.y/100)*h,l.r,l.angle); });
-    for (let i=ripples.length-1;i>=0;i--) {
-      const r=ripples[i]; r.r+=r.speed; r.alpha-=0.006;
-      if (r.alpha<=0) { ripples.splice(i,1); continue; }
-      ctx.strokeStyle=`rgba(90,155,90,${r.alpha})`; ctx.lineWidth=0.9;
-      ctx.beginPath(); ctx.arc(r.x,r.y,r.r,0,Math.PI*2); ctx.stroke();
-    }
-    fish.forEach(f => { updateFish(f); drawKoi(f); });
+    const w=canvas.width,h=canvas.height;
+    ctx.fillStyle='#182815';ctx.fillRect(0,0,w,h);
+    for(let i=0;i<6;i++){const x=(i/6)*w+Math.sin(Date.now()*0.00025+i*1.1)*25;ctx.fillStyle='rgba(90,140,70,0.035)';ctx.fillRect(x,0,w*0.1,h);}
+    lilies.forEach(l=>{l.angle+=l.drift;drawLily((l.x/100)*w,(l.y/100)*h,l.r,l.angle);});
+    for(let i=ripples.length-1;i>=0;i--){const r=ripples[i];r.r+=r.speed;r.alpha-=0.006;if(r.alpha<=0){ripples.splice(i,1);continue;}ctx.strokeStyle=`rgba(90,155,90,${r.alpha})`;ctx.lineWidth=0.9;ctx.beginPath();ctx.arc(r.x,r.y,r.r,0,Math.PI*2);ctx.stroke();}
+    fish.forEach(f=>{updateFish(f);drawKoi(f);});
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
 })();
 
-/* ── STONE SCROLL REVEAL ── */
-const stoneObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold:0.15});
-document.querySelectorAll('.stone-row').forEach((r,i) => {
-  r.style.transitionDelay = `${i*0.15}s`;
-  stoneObs.observe(r);
-});
+/* ── STONE REVEAL ── */
+const stoneObs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:0.15});
+document.querySelectorAll('.stone-row').forEach((r,i) => { r.style.transitionDelay=`${i*0.15}s`; stoneObs.observe(r); });
 
 /* ── FLOAT NAV ── */
-new IntersectionObserver(entries => {
-  document.getElementById('floatNav').classList.toggle('visible', !entries[0].isIntersecting);
-}, {threshold:0.1}).observe(document.getElementById('hero'));
+new IntersectionObserver(entries => { document.getElementById('floatNav').classList.toggle('visible', !entries[0].isIntersecting); }, {threshold:0.1}).observe(document.getElementById('hero'));
 </script>
+
 <script>
 (function initImages() {
   const map = {
-    'img-hero':  { el: document.getElementById('img-hero'), src: PAYAPA_IMAGES.hero },
-    'qc-main':   { el: document.querySelector('[data-img="qc-main"]'),  src: PAYAPA_IMAGES.qc[0] },
-    'mk-main':   { el: document.querySelector('[data-img="mk-main"]'),  src: PAYAPA_IMAGES.makati[0] },
-    'pq-main':   { el: document.querySelector('[data-img="pq-main"]'),  src: PAYAPA_IMAGES.paranaque[0] },
+    'img-hero': { el: document.getElementById('img-hero'), src: PAYAPA_IMAGES.hero },
+    'qc-main':  { el: document.querySelector('[data-img="qc-main"]'),  src: PAYAPA_IMAGES.qc[0] },
+    'mk-main':  { el: document.querySelector('[data-img="mk-main"]'),  src: PAYAPA_IMAGES.makati[0] },
+    'pq-main':  { el: document.querySelector('[data-img="pq-main"]'),  src: PAYAPA_IMAGES.paranaque[0] },
   };
-  Object.values(map).forEach(({el, src}) => { if(el) el.src = src; });
-  document.querySelectorAll('[data-img="logo"]').forEach(el => { el.src = PAYAPA_IMAGES.logo; });
-  PAYAPA_IMAGES.qc.forEach((src,i)        => { const el=document.querySelector('[data-img="qc-'+i+'"]');        if(el) el.src=src; });
-  PAYAPA_IMAGES.makati.forEach((src,i)    => { const el=document.querySelector('[data-img="mk-'+i+'"]');        if(el) el.src=src; });
-  PAYAPA_IMAGES.paranaque.forEach((src,i) => { const el=document.querySelector('[data-img="pq-'+i+'"]');        if(el) el.src=src; });
+  Object.values(map).forEach(({el,src}) => { if(el) el.src=src; });
+  document.querySelectorAll('[data-img="logo"]').forEach(el => { el.src=PAYAPA_IMAGES.logo; });
+  PAYAPA_IMAGES.qc.forEach((src,i)        => { const el=document.querySelector('[data-img="qc-'+i+'"]');  if(el) el.src=src; });
+  PAYAPA_IMAGES.makati.forEach((src,i)    => { const el=document.querySelector('[data-img="mk-'+i+'"]');  if(el) el.src=src; });
+  PAYAPA_IMAGES.paranaque.forEach((src,i) => { const el=document.querySelector('[data-img="pq-'+i+'"]');  if(el) el.src=src; });
 })();
 </script>
 </body>
